@@ -35,4 +35,12 @@ public class MyHashSet<T>
     public String toString() {
         return Arrays.toString(buckets);
     }
+
+    public List<T> toList() {
+        List<T> all = new LinkedList<>();
+        for (List<T> bucket : buckets) {
+            all.addAll(bucket);
+        }
+        return all;
+    }
 }

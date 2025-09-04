@@ -1,12 +1,16 @@
 import java.util.List;
 
 public class Student {
-    private String name;
-    private List<Book> books;
+    private final String name;
+    private final List<Book> books;
 
     public Student(String name, List<Book> books) {
         this.name = name;
         this.books = books;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public List<Book> getBooks() {
@@ -15,6 +19,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "name='" + name + '\'' + ", books=" + books + '}';
+        return "Student {" + "name:'" + name + '\'' + ", books" + books + '}';
     }
 }

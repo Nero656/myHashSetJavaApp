@@ -1,6 +1,4 @@
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 
 public class MyArrayList<T> {
     private Object[] elements;
@@ -45,4 +43,9 @@ public class MyArrayList<T> {
     public String toString() {
         return Arrays.toString(Arrays.copyOf(elements, size));
     }
+
+    public int size() {
+        return size;
+    }
+
 }
