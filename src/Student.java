@@ -1,24 +1,23 @@
-import java.util.List;
 
 public class Student {
-    private final String name;
-    private final List<Book> books;
+    private final String NAME;
+    private final MyArrayList<Book> BOOKS;
 
-    public Student(String name, List<Book> books) {
-        this.name = name;
-        this.books = books;
+    public Student(String name, MyArrayList<Book> books) {
+        this.NAME = name;
+        this.BOOKS = books;
     }
 
     public String getName() {
-        return name;
+        return NAME;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public MyArrayList<Book> getBooks() {
+        return BOOKS;
     }
 
     @Override
     public String toString() {
-        return "Student {" + "name:'" + name + '\'' + ", books" + books + '}';
+        return "Student {" + "name:'" + NAME + '\'' + ", books" + BOOKS + '}';
     }
 }
