@@ -1,7 +1,5 @@
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Main {
@@ -46,10 +44,17 @@ public class Main {
 
         System.out.println("\nСписок студентов и их книг:");
         MyHashSet<Book> uniqueBooks = new MyHashSet<>();
+
+        for (int i = 0; i < students.size(); i++) {
+            Student st = students.get(i);
+            for (int j = 0; j < st.getBooks().size(); j++) {
+                uniqueBooks.insert(st.getBooks().get(j));
+            }
+        }
+
         IntStream.range(0, students.size())
                 .mapToObj(students::get)
                 .flatMap(st -> {
-                    // Выводим студента и его книги
                     System.out.println("\nСтудент: " + st.getName());
                     IntStream.range(0, st.getBooks().size())
                             .mapToObj(st.getBooks()::get)
@@ -60,7 +65,6 @@ public class Main {
                 .peek(uniqueBooks::insert)
                 .toList();
 
-        // Вывод всех уникальных книг без ограничения
         System.out.println("\nВсе уникальные книги студентов (отсортированные):");
         uniqueBooks.toList().stream()
                 .sorted(Comparator
@@ -69,7 +73,6 @@ public class Main {
                         .thenComparingInt(Book::getYear))
                 .forEach(System.out::println);
 
-        // Список топ-3 книг по условию год > 2000
         List<Book> top3Books = uniqueBooks.toList().stream()
                 .filter(b -> b.getYear() > 2000)
                 .sorted(Comparator.comparingInt(Book::getPages))
